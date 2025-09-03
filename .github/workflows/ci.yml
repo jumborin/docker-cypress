@@ -1,0 +1,40 @@
+name: Cypress E2E Tests
+
+on:
+  push:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Build and run services
+        run: |
+          docker compose build --no-cache
+          docker compose up -d
+
+      - name: Run Cypress tests
+        run: docker compose exec -T cypress npx cypress run --browser chrome
+
+      - name: Upload Cypress screenshots
+        uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: cypress-screenshots
+          path: cypress/test/screenshots
+
+      - name: Upload Cypress videos
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: cypress-videos
+          path: cypress/test/videos
+
+      - name: Stop services
+        if: always()
+        run: docker compose down

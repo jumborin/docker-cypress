@@ -1,0 +1,13 @@
+services:
+  cypress:
+    container_name: cypress
+    build:
+      context: .
+      dockerfile: ./cypress/Dockerfile
+    volumes:
+      - ./cypress/test:/e2e/cypress/test
+      - ./cypress.config.js:/e2e/cypress.config.js
+    working_dir: /e2e
+    environment:
+      - DISPLAY=:99
+    command: ["sh", "-c", "Xvfb :99 -screen 0 1024x768x24 -ac +extension GLX +render -noreset & sleep 2 && tail -f /dev/null"]
