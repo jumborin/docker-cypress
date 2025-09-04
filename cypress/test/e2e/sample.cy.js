@@ -1,4 +1,5 @@
-describe('トップページの表示', () => {
+describe('Googleの表示(サンプル)', () => {
+
   it('ページタイトルにアプリ名が含まれていること', () => {
     cy.visit('https://www.google.co.jp/');
     cy.title().should('include', 'Google');
