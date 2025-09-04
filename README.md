@@ -5,7 +5,8 @@
 ```
 docker compose build 
 docker compose up -d
-docker compose exec -T cypress npx cypress run --browser chrome
+docker compose exec -T cypress npx cypress run --browser chrome --headless
+docker compose exec -T cypress npx cypress run --browser edge --headless
 ```
 * テストケース
   * cypress/test/e2eにsample.cy.jsを参考にjsファイルを追加
