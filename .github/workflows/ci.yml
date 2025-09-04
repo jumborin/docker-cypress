@@ -19,7 +19,7 @@ jobs:
           docker compose up -d
 
       - name: Run Cypress tests
-        run: docker compose exec -T cypress npx cypress run --browser chrome
+        run: docker compose exec -T cypress npx cypress run --browser edge --headless
 
       - name: Upload Cypress screenshots
         uses: actions/upload-artifact@v4
