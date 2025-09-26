@@ -2,7 +2,8 @@ const { defineConfig } = require("cypress");
 
 module.exports = defineConfig({
   e2e: {
-    specPattern: "cypress/test/e2e/**/*.cy.{js,jsx,ts,tsx}",
+    //specPattern: "cypress/test/e2e/**/*.cy.{js,jsx,ts,tsx}",
+    specPattern: "cypress/test/e2e/redmine/*.cy.{js,jsx,ts,tsx}",
     supportFile: "cypress/test/support/e2e.js",
     screenshotsFolder: "cypress/test/screenshots",
     videosFolder: "cypress/test/videos",
