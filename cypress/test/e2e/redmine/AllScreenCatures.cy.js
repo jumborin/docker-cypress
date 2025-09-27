@@ -25,7 +25,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
   });
 
   /**
-   * メニュー毎に画面遷移テスト
+   * 上部メニュー毎に画面遷移テスト
    */
   describe('画面遷移テスト', () => {
     describe('基本メニューテスト', () => {
@@ -45,6 +45,9 @@ describe('Redmineの全画面の画面表示テスト', () => {
         cy.url().should('include', '/projects');
       });
       describe('タブリンクテスト', () => {
+        afterEach(function () {
+          cy.screenshot(this.currentTest.title);
+        });
         it('活動タブをクリックし、活動画面に遷移すること', function () {
           cy.get('#main-menu ul li a.activity').click();
           cy.url().should('include', '/activity');
@@ -82,17 +85,63 @@ describe('Redmineの全画面の画面表示テスト', () => {
         cy.url().should('include', '/admin');
       });
       describe('ペインリンクテスト', () => {
-        it('プロジェクトリンクをクリックし、プロジェクト管理画面に遷移すること', function () {
+        afterEach(function () {
+          cy.screenshot(this.currentTest.title);
+        });
+        it('「プロジェクト」リンクをクリックし、「プロジェクト管理画面」に遷移すること', function () {
           cy.get('#admin-menu ul li a.projects').click();
           cy.url().should('include', '/admin/projects');
         });
-        it('ユーザーリンクをクリックし、ユーザー管理画面に遷移すること', function () {
+        it('「ユーザー」リンクをクリックし、「ユーザー管理画面」に遷移すること', function () {
           cy.get('#admin-menu ul li a.users').click();
           cy.url().should('include', '/users');
         });
+        it('「グループ」リンクをクリックし、「グループ」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.groups').click();
+          cy.url().should('include', '/groups');
+        });
+        it('「ロールと権限」リンクをクリックし、「ロール」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.roles').click();
+          cy.url().should('include', '/roles');
+        });
+        it('「トラッカー」リンクをクリックし、「トラッカー」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.trackers').click();
+          cy.url().should('include', '/trackers');
+        });
+        it('「チケットのステータス」リンクをクリックし、「チケット」のステータスの管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.issue-statuses').click();
+          cy.url().should('include', '/issue_statuses');
+        });
+        it('「ワークフロー」リンクをクリックし、「ワークフロー」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.workflows').click();
+          cy.url().should('include', '/workflows/edit');
+        });
+        it('「カスタムフィールド」リンクをクリックし、「カスタムフィールド」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.custom-fields').click();
+          cy.url().should('include', '/custom_fields');
+        });
+        it('「選択肢の値」リンクをクリックし、「選択肢の値」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.enumerations').click();
+          cy.url().should('include', '/enumerations');
+        });
+        it('「設定」リンクをクリックし、「設定」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.settings').click();
+          cy.url().should('include', '/settings');
+        });
+        it('「LDAP認証」リンクをクリックし、「認証方式」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.ldap-authentication').click();
+          cy.url().should('include', '/auth_sources');
+        });
+        it('「プラグイン」リンクをクリックし、「プラグイン」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.plugins').click();
+          cy.url().should('include', '/admin/plugins');
+        });
+        it('「情報」リンクをクリックし、「情報」の管理画面に遷移すること', function () {
+          cy.get('#admin-menu ul li a.info').click();
+          cy.url().should('include', '/admin/info');
+        });
       });
     });
-
 
     describe('ヘルプメニューテスト', () => {
       it('ヘルプリンクをクリックし、Redmineガイドに遷移すること', function () {
