@@ -29,18 +29,18 @@ describe('Redmineの全画面の画面表示テスト', () => {
    */
   describe('画面遷移テスト', () => {
     describe('基本メニューテスト', () => {
-      it('ホームリンクをクリックし、ホーム画面に遷移すること', function () {
+      it('「ホーム」リンクをクリックし、「ホーム」画面に遷移すること', function () {
         cy.get('#top-menu ul li a.home').click();
         cy.url().should('include', '158.179.191.24');
       });
-      it('マイページリンクをクリックし、マイページ画面に遷移すること', function () {
+      it('「マイページ」リンクをクリックし、「マイページ」画面に遷移すること', function () {
         cy.get('#top-menu ul li a.my-page').click();
         cy.url().should('include', '/my/page');
       });
     });
 
     describe('プロジェクトメニューテスト', () => {
-      it('プロジェクトリンクをクリックし、プロジェクト一覧画面に遷移すること', function () {
+      it('「プロジェクト」リンクをクリックし、「プロジェクト」一覧画面に遷移すること', function () {
         cy.get('#top-menu ul li a.projects').click();
         cy.url().should('include', '/projects');
       });
@@ -63,31 +63,31 @@ describe('Redmineの全画面の画面表示テスト', () => {
           cy.screenshot(this.currentTest.title);
         });
 
-        it('活動タブをクリックし、活動画面に遷移すること', function () {
+        it('「活動」タブをクリックし、「活動」画面に遷移すること', function () {
           cy.get('#main-menu ul li a.activity').click();
           cy.url().should('include', '/activity');
         });
-        it('チケットタブをクリックし、チケット一覧画面に遷移すること', function () {
+        it('「チケット」タブをクリックし、「チケット」一覧画面に遷移すること', function () {
           cy.get('#main-menu ul li a.issues').click();
           cy.url().should('include', '/issues');
         });
-        it('作業時間タブをクリックし、作業時間一覧画面に遷移すること', function () {
+        it('「作業時間」タブをクリックし、「作業時間」一覧画面に遷移すること', function () {
           cy.get('#main-menu ul li a.time-entries').click();
           cy.url().should('include', '/time_entries');
         });
-        it('ガントチャートタブをクリックし、ガントチャート画面に遷移すること', function () {
+        it('「ガントチャート」タブをクリックし、「ガントチャート」画面に遷移すること', function () {
           cy.get('#main-menu ul li a.gantt').click();
           cy.url().should('include', '/issues/gantt');
         });
-        it('カレンダータブをクリックし、カレンダー画面に遷移すること', function () {
+        it('「カレンダー」タブをクリックし、「カレンダー」画面に遷移すること', function () {
           cy.get('#main-menu ul li a.calendar').click();
           cy.url().should('include', '/issues/calendar');
         });
-        it('ニュースタブをクリックし、ニュース一覧画面に遷移すること', function () {
+        it('「ニュース」タブをクリックし、「ニュース」一覧画面に遷移すること', function () {
           cy.get('#main-menu ul li a.news').click();
           cy.url().should('include', '/news');
         });
-        it('プロジェクトタブをクリックし、プロジェクト一覧画面に遷移すること', function () {
+        it('「プロジェクト」タブをクリックし、「プロジェクト」一覧画面に遷移すること', function () {
           cy.get('#main-menu ul li a.projects').click();
           cy.url().should('include', '/projects');
         });
@@ -95,7 +95,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
     });
 
     describe('管理メニューテスト', () => {
-      it('管理リンクをクリックし、管理画面に遷移すること', function () {
+      it('「管理」リンクをクリックし、「管理」画面に遷移すること', function () {
         cy.get('#top-menu ul li a.administration').click();
         cy.url().should('include', '/admin');
       });
@@ -109,11 +109,11 @@ describe('Redmineの全画面の画面表示テスト', () => {
           cy.screenshot(this.currentTest.title);
         });
 
-        it('「プロジェクト」リンクをクリックし、「プロジェクト管理画面」に遷移すること', function () {
+        it('「プロジェクト」リンクをクリックし、「プロジェクト」の管理画面に遷移すること', function () {
           cy.get('#admin-menu ul li a.projects').click();
           cy.url().should('include', '/admin/projects');
         });
-        it('「ユーザー」リンクをクリックし、「ユーザー管理画面」に遷移すること', function () {
+        it('「ユーザー」リンクをクリックし、「ユーザー」の管理画面に遷移すること', function () {
           cy.get('#admin-menu ul li a.users').click();
           cy.url().should('include', '/users');
         });
@@ -312,7 +312,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
     describe('ログアウトテスト', () => {
       it('「ログアウト」リンクをクリックし、ログアウトすること', function () {
         cy.get('#wrapper div.flyout-menu.js-flyout-menu span.js-profile-menu ul li:nth-child(2) a').click();
-        cy.url().should('include', 'http://158.179.191.24/');
+        cy.url().should('include', '/');
       });
     });
   });
