@@ -304,14 +304,14 @@ describe('Redmineの全画面の画面表示テスト', () => {
 
     describe('個人設定テスト', () => {
       it('「個人設定」リンクをクリックし、「個人設定」画面に遷移すること', function () {
-        cy.get('#wrapper div.flyout-menu.js-flyout-menu span.js-profile-menu ul li:nth-child(1) a').click();
+        cy.get('#account ul li a.my-account').click();
         cy.url().should('include', '/my/account');
       });
     });
-
+    
     describe('ログアウトテスト', () => {
       it('「ログアウト」リンクをクリックし、ログアウトすること', function () {
-        cy.get('#wrapper div.flyout-menu.js-flyout-menu span.js-profile-menu ul li:nth-child(2) a').click();
+        cy.get('#account ul li a.logout').click();
         cy.url().should('include', '/');
       });
     });
