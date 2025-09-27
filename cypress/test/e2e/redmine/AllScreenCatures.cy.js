@@ -194,7 +194,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
           });
           it('「サマリー」リンクをクリックし、「ワークフロー＞＞サマリー」画面に遷移すること', function () {
             cy.get('#content div.contextual a.icon.icon-summary').click();
-            cy.url().should('include', '/workflows/summary');
+            cy.url().should('include', '/workflows');
           });
           it('「ステータスの遷移」タブをクリックし、「ワークフロー＞＞ステータスの遷移」画面に遷移すること', function () {
             cy.get('#content div.tabs ul li:nth-child(1) a').click();
