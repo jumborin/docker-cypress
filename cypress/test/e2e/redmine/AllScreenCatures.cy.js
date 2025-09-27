@@ -50,11 +50,13 @@ describe('Redmineの全画面の画面表示テスト', () => {
         beforeEach(() => {
           cy.get('#top-menu ul li a.projects').click(); //プロジェクト一覧画面へ
           cy.url().should('include', '/projects');
-          cy.get('#content div.contextual a.icon.icon-add').click(); //新規プロジェクト作成画面へ
-          cy.get('#project_name').type('TestProjectName'); //プロジェクト名
-          cy.get('#project_identifier').type('testprojectidentifier'); //プロジェクト識別子
-          cy.get('input[type=submit]').click(); //作成ボタン
-          cy.get('#top-menu ul li a.projects').click(); //プロジェクト一覧画面へ
+
+          //cy.get('#content div.contextual a.icon.icon-add').click(); //新規プロジェクト作成画面へ
+          //cy.get('#project_name').type('TestProjectName'); //プロジェクト名
+          //cy.get('#project_identifier').type('testprojectidentifier'); //プロジェクト識別子
+          //cy.get('input[type=submit]').click(); //作成ボタン
+          
+          //cy.get('#top-menu ul li a.projects').click(); //プロジェクト一覧画面へ
         });
 
         afterEach(function () {
