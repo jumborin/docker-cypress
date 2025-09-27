@@ -55,7 +55,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
           //cy.get('#project_name').type('TestProjectName'); //プロジェクト名
           //cy.get('#project_identifier').type('testprojectidentifier'); //プロジェクト識別子
           //cy.get('input[type=submit]').click(); //作成ボタン
-          
+
           //cy.get('#top-menu ul li a.projects').click(); //プロジェクト一覧画面へ
         });
 
@@ -104,9 +104,11 @@ describe('Redmineの全画面の画面表示テスト', () => {
         beforeEach(() => {
           cy.get('#top-menu ul li a.administration').click();
         });
+
         afterEach(function () {
           cy.screenshot(this.currentTest.title);
         });
+
         it('「プロジェクト」リンクをクリックし、「プロジェクト管理画面」に遷移すること', function () {
           cy.get('#admin-menu ul li a.projects').click();
           cy.url().should('include', '/admin/projects');
@@ -146,6 +148,65 @@ describe('Redmineの全画面の画面表示テスト', () => {
         it('「設定」リンクをクリックし、「設定」の管理画面に遷移すること', function () {
           cy.get('#admin-menu ul li a.settings').click();
           cy.url().should('include', '/settings');
+        });
+        describe('管理＞設定＞タブメニューテスト', () => {
+          beforeEach(() => {
+            cy.get('#admin-menu ul li a.settings').click();
+            cy.url().should('include', '/settings');
+          });
+
+          afterEach(function () {
+            cy.screenshot(this.currentTest.title);
+          });
+
+          it('「全般」タブをクリックし、「全般」の設定画面に遷移すること', function () {
+            cy.get('#tab-general').click();
+            cy.url().should('include', '/settings?tab=general');
+          });
+          it('「表示」タブをクリックし、「表示」の設定画面に遷移すること', function () {
+            cy.get('#tab-display').click();
+            cy.url().should('include', '/settings?tab=display');
+          });
+          it('「認証」タブをクリックし、「認証」の設定画面に遷移すること', function () {
+            cy.get('#tab-authentication').click();
+            cy.url().should('include', '/settings?tab=authentication');
+          });
+          it('「API」タブをクリックし、「API」の設定画面に遷移すること', function () {
+            cy.get('#tab-api').click();
+            cy.url().should('include', '/settings?tab=api');
+          });
+          it('「プロジェクト」タブをクリックし、「プロジェクト」の設定画面に遷移すること', function () {
+            cy.get('#tab-projects').click();
+            cy.url().should('include', '/settings?tab=projects');
+          });
+          it('「ユーザー」タブをクリックし、「ユーザー」の設定画面に遷移すること', function () {
+            cy.get('#tab-users').click();
+            cy.url().should('include', '/settings?tab=users');
+          });
+          it('「チケットトラッキング」タブをクリックし、「チケットトラッキング」の設定画面に遷移すること', function () {
+            cy.get('#tab-issues').click();
+            cy.url().should('include', '/settings?tab=issues');
+          });
+          it('「時間管理」タブをクリックし、「時間管理」の設定画面に遷移すること', function () {
+            cy.get('#tab-timelog').click();
+            cy.url().should('include', '/settings?tab=timelog');
+          });
+          it('「ファイル」タブをクリックし、「ファイル」の設定画面に遷移すること', function () {
+            cy.get('#tab-attachments').click();
+            cy.url().should('include', '/settings?tab=attachments');
+          });
+          it('「メール通知」タブをクリックし、「メール通知」の設定画面に遷移すること', function () {
+            cy.get('#tab-notifications').click();
+            cy.url().should('include', '/settings?tab=notifications');
+          });
+          it('「受信メール」タブをクリックし、「受信メール」の設定画面に遷移すること', function () {
+            cy.get('#tab-mail_handler').click();
+            cy.url().should('include', '/settings?tab=mail_handler');
+          });
+          it('「リポジトリ」タブをクリックし、「リポジトリ」の設定画面に遷移すること', function () {
+            cy.get('#tab-repositories').click();
+            cy.url().should('include', '/settings?tab=repositories');
+          });
         });
         it('「LDAP認証」リンクをクリックし、「認証方式」の管理画面に遷移すること', function () {
           cy.get('#admin-menu ul li a.ldap-authentication').click();
