@@ -46,12 +46,21 @@ describe('Redmineの全画面の画面表示テスト', () => {
       });
 
       describe('プロジェクト＞タブリンクテスト', () => {
+
         beforeEach(() => {
-          cy.get('#top-menu ul li a.projects').click();
+          cy.get('#top-menu ul li a.projects').click(); //プロジェクト一覧画面へ
+          cy.url().should('include', '/projects');
+          cy.get('#content div.contextual a.icon.icon-add').click(); //新規プロジェクト作成画面へ
+          cy.get('#project_name').type('TestProjectName'); //プロジェクト名
+          cy.get('#project_identifier').type('testprojectidentifier'); //プロジェクト識別子
+          cy.get('input[type=submit]').click(); //作成ボタン
+          cy.get('#top-menu ul li a.projects').click(); //プロジェクト一覧画面へ
         });
+
         afterEach(function () {
           cy.screenshot(this.currentTest.title);
         });
+
         it('活動タブをクリックし、活動画面に遷移すること', function () {
           cy.get('#main-menu ul li a.activity').click();
           cy.url().should('include', '/activity');
