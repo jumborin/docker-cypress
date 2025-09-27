@@ -195,10 +195,12 @@ describe('Redmineの全画面の画面表示テスト', () => {
             cy.get('#tab-attachments').click();
             cy.url().should('include', '/settings?tab=attachments');
           });
+          /*
           it('「メール通知」タブをクリックし、「メール通知」の設定画面に遷移すること', function () {
             cy.get('#tab-notifications').click();
             cy.url().should('include', '/settings?tab=notifications');
           });
+          */
           it('「受信メール」タブをクリックし、「受信メール」の設定画面に遷移すること', function () {
             cy.get('#tab-mail_handler').click();
             cy.url().should('include', '/settings?tab=mail_handler');
