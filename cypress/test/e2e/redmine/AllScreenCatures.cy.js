@@ -301,5 +301,19 @@ describe('Redmineの全画面の画面表示テスト', () => {
         //TODO:確認処理を追加
       });
     });
+
+    describe('個人設定テスト', () => {
+      it('「個人設定」リンクをクリックし、「個人設定」画面に遷移すること', function () {
+        cy.get('#wrapper div.flyout-menu.js-flyout-menu span.js-profile-menu ul li:nth-child(1) a').click();
+        cy.url().should('include', '/my/account');
+      });
+    });
+
+    describe('ログアウトテスト', () => {
+      it('「ログアウト」リンクをクリックし、ログアウトすること', function () {
+        cy.get('#wrapper div.flyout-menu.js-flyout-menu span.js-profile-menu ul li:nth-child(2) a').click();
+        cy.url().should('include', 'http://158.179.191.24/');
+      });
+    });
   });
 });
