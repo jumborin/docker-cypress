@@ -128,7 +128,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
           cy.url().should('include', '/trackers');
         });
         it('「チケットのステータス」リンクをクリックし、「チケット」のステータスの管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li a.issue_statuses').click();
+          cy.get('#admin-menu ul li a.issue-statuses').click();
           cy.url().should('include', '/issue_statuses');
         });
         it('「ワークフロー」リンクをクリックし、「ワークフロー」の管理画面に遷移すること', function () {
@@ -136,7 +136,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
           cy.url().should('include', '/workflows/edit');
         });
         it('「カスタムフィールド」リンクをクリックし、「カスタムフィールド」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li a.custom_fields').click();
+          cy.get('#admin-menu ul li a.custom-fields').click();
           cy.url().should('include', '/custom_fields');
         });
         it('「選択肢の値」リンクをクリックし、「選択肢の値」の管理画面に遷移すること', function () {
@@ -148,7 +148,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
           cy.url().should('include', '/settings');
         });
         it('「LDAP認証」リンクをクリックし、「認証方式」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li a.auth_sources').click();
+          cy.get('#admin-menu ul li a.ldap-authentication').click();
           cy.url().should('include', '/auth_sources');
         });
         it('「プラグイン」リンクをクリックし、「プラグイン」の管理画面に遷移すること', function () {
