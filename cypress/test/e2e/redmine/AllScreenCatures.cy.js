@@ -125,18 +125,87 @@ describe('Redmineの全画面の画面表示テスト', () => {
           cy.get('#admin-menu ul li a.roles').click();
           cy.url().should('include', '/roles');
         });
+
+        describe('管理＞ロールと権限＞リンクテスト', () => {
+          beforeEach(() => {
+            cy.get('#admin-menu ul li a.roles').click();
+          });
+
+          afterEach(function () {
+            cy.screenshot(this.currentTest.title);
+          });
+
+          it('「新しいロール」リンクをクリックし、「新しいロール」の管理画面に遷移すること', function () {
+            cy.get('#content div.contextual a.icon.icon-add').click();
+            cy.url().should('include', '/roles/new');
+          });
+          it('「権限レポート」リンクをクリックし、「権限レポート」の管理画面に遷移すること', function () {
+            cy.get('#content div.contextual a.icon.icon-summary').click();
+            cy.url().should('include', '/roles/permissions');
+          });
+        });
+
         it('「トラッカー」リンクをクリックし、「トラッカー」の管理画面に遷移すること', function () {
           cy.get('#admin-menu ul li a.trackers').click();
           cy.url().should('include', '/trackers');
         });
+
+        describe('管理＞トラッカー＞リンクテスト', () => {
+          beforeEach(() => {
+            cy.get('#admin-menu ul li a.trackers').click();
+          });
+
+          afterEach(function () {
+            cy.screenshot(this.currentTest.title);
+          });
+
+          it('「新しいトラッカー」リンクをクリックし、「新しいトラッカー」の管理画面に遷移すること', function () {
+            cy.get('#content div.contextual a.icon.icon-add').click();
+            cy.url().should('include', '/trackers/new');
+          });
+          it('「サマリー」リンクをクリックし、「サマリー」の管理画面に遷移すること', function () {
+            cy.get('#content div.contextual a.icon.icon-summary').click();
+            cy.url().should('include', '/trackers/fields');
+          });
+        });
+
         it('「チケットのステータス」リンクをクリックし、「チケット」のステータスの管理画面に遷移すること', function () {
           cy.get('#admin-menu ul li a.issue-statuses').click();
           cy.url().should('include', '/issue_statuses');
         });
+
         it('「ワークフロー」リンクをクリックし、「ワークフロー」の管理画面に遷移すること', function () {
           cy.get('#admin-menu ul li a.workflows').click();
           cy.url().should('include', '/workflows/edit');
         });
+
+        describe('管理＞ワークフロー＞リンクテスト', () => {
+          beforeEach(() => {
+            cy.get('#admin-menu ul li a.workflows').click();
+          });
+
+          afterEach(function () {
+            cy.screenshot(this.currentTest.title);
+          });
+
+          it('「コピー」リンクをクリックし、「ワークフロー＞＞コピー」画面に遷移すること', function () {
+            cy.get('#content div.contextual a.icon.icon-copy').click();
+            cy.url().should('include', '/workflows/copy');
+          });
+          it('「サマリー」リンクをクリックし、「ワークフロー＞＞サマリー」画面に遷移すること', function () {
+            cy.get('#content div.contextual a.icon.icon-summary').click();
+            cy.url().should('include', '/workflows/summary');
+          });
+          it('「ステータスの遷移」タブをクリックし、「ワークフロー＞＞ステータスの遷移」画面に遷移すること', function () {
+            cy.get('#content div.tabs ul li:nth-child(1) a').click();
+            cy.url().should('include', '/workflows/edit');
+          });
+          it('「フィールドに対する権限」タブをクリックし、「ワークフロー＞＞フィールドに対する権限」画面に遷移すること', function () {
+            cy.get('#content div.tabs ul li:nth-child(2) a').click();
+            cy.url().should('include', '/workflows/permissions');
+          });
+        });
+
         it('「カスタムフィールド」リンクをクリックし、「カスタムフィールド」の管理画面に遷移すること', function () {
           cy.get('#admin-menu ul li a.custom-fields').click();
           cy.url().should('include', '/custom_fields');
@@ -149,6 +218,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
           cy.get('#admin-menu ul li a.settings').click();
           cy.url().should('include', '/settings');
         });
+
         describe('管理＞設定＞タブメニューテスト', () => {
           beforeEach(() => {
             cy.get('#admin-menu ul li a.settings').click();
