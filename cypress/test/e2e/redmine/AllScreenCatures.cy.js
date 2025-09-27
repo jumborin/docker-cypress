@@ -46,6 +46,9 @@ describe('Redmineの全画面の画面表示テスト', () => {
       });
 
       describe('プロジェクト＞タブリンクテスト', () => {
+        beforeEach(() => {
+          cy.get('#top-menu ul li a.projects').click();
+        });
         afterEach(function () {
           cy.screenshot(this.currentTest.title);
         });
@@ -87,59 +90,62 @@ describe('Redmineの全画面の画面表示テスト', () => {
       });
 
       describe('管理＞ペインリンクテスト', () => {
+        beforeEach(() => {
+          cy.get('#top-menu ul li a.administration').click();
+        });
         afterEach(function () {
           cy.screenshot(this.currentTest.title);
         });
         it('「プロジェクト」リンクをクリックし、「プロジェクト管理画面」に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(1) a').click();
+          cy.get('#admin-menu ul li a.projects').click();
           cy.url().should('include', '/admin/projects');
         });
         it('「ユーザー」リンクをクリックし、「ユーザー管理画面」に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(2) a').click();
+          cy.get('#admin-menu ul li a.users').click();
           cy.url().should('include', '/users');
         });
         it('「グループ」リンクをクリックし、「グループ」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(3) a').click();
+          cy.get('#admin-menu ul li a.groups').click();
           cy.url().should('include', '/groups');
         });
         it('「ロールと権限」リンクをクリックし、「ロール」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(4) a').click();
+          cy.get('#admin-menu ul li a.roles').click();
           cy.url().should('include', '/roles');
         });
         it('「トラッカー」リンクをクリックし、「トラッカー」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(5) a').click();
+          cy.get('#admin-menu ul li a.trackers').click();
           cy.url().should('include', '/trackers');
         });
         it('「チケットのステータス」リンクをクリックし、「チケット」のステータスの管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(6) a').click();
+          cy.get('#admin-menu ul li a.issue_statuses').click();
           cy.url().should('include', '/issue_statuses');
         });
         it('「ワークフロー」リンクをクリックし、「ワークフロー」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(7) a').click();
+          cy.get('#admin-menu ul li a.workflows').click();
           cy.url().should('include', '/workflows/edit');
         });
         it('「カスタムフィールド」リンクをクリックし、「カスタムフィールド」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(8) a').click();
+          cy.get('#admin-menu ul li a.custom_fields').click();
           cy.url().should('include', '/custom_fields');
         });
         it('「選択肢の値」リンクをクリックし、「選択肢の値」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(9) a').click();
+          cy.get('#admin-menu ul li a.enumerations').click();
           cy.url().should('include', '/enumerations');
         });
         it('「設定」リンクをクリックし、「設定」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(10) a').click();
+          cy.get('#admin-menu ul li a.settings').click();
           cy.url().should('include', '/settings');
         });
         it('「LDAP認証」リンクをクリックし、「認証方式」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(11) a').click();
+          cy.get('#admin-menu ul li a.auth_sources').click();
           cy.url().should('include', '/auth_sources');
         });
         it('「プラグイン」リンクをクリックし、「プラグイン」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(12) a').click();
+          cy.get('#admin-menu ul li a.plugins').click();
           cy.url().should('include', '/admin/plugins');
         });
         it('「情報」リンクをクリックし、「情報」の管理画面に遷移すること', function () {
-          cy.get('#admin-menu ul li:nth-child(13) a').click();
+          cy.get('#admin-menu ul li a.info').click();
           cy.url().should('include', '/admin/info');
         });
       });
