@@ -4,10 +4,11 @@ describe('Redmineの全画面の画面表示テスト', () => {
    * 事前処理：Redmineにログインする。
    */
   beforeEach(() => {
-    cy.visit('http://158.179.191.24/');
+    const TEST_SITE_URL = Cypress.env('TEST_SITE_URL') || 'http://158.179.191.24/';
+    cy.visit(TEST_SITE_URL); //Redmineのトップ画面へ
     cy.get('#account ul li a.login').click();
-    cy.get('input#username').type('TestUser'); //ユーザ名入力ボックス
-    cy.get('input#password').type('p@ssw0rd'); //パスワード入力ボックス
+    cy.get('input#username').type(Cypress.env('TEST_USERNAME')); //ユーザ名入力ボックス
+    cy.get('input#password').type(Cypress.env('TEST_PASSWORD')); //パスワード入力ボックス
     cy.get('input[name="login"]').click(); //ログインボタン
   });
   afterEach(function () {
@@ -20,7 +21,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
    */
   describe('ログインテスト', () => {
     it('ログインリンクをクリックし、ログイン画面に遷移すること', function () {
-      cy.get('#loggedas').should('contain', 'TestUser'); //ログイン確認
+      cy.get('#loggedas').should('contain', Cypress.env('TEST_USERNAME')); //ログイン確認
     });
   });
 
@@ -31,7 +32,7 @@ describe('Redmineの全画面の画面表示テスト', () => {
     describe('基本メニューテスト', () => {
       it('「ホーム」リンクをクリックし、「ホーム」画面に遷移すること', function () {
         cy.get('#top-menu ul li a.home').click();
-        cy.url().should('include', '158.179.191.24');
+        cy.url().should('include', '/');
       });
       it('「マイページ」リンクをクリックし、「マイページ」画面に遷移すること', function () {
         cy.get('#top-menu ul li a.my-page').click();
