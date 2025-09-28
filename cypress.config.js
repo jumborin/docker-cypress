@@ -15,7 +15,7 @@ module.exports = defineConfig({
   },
   env: {
     TEST_SITE_URL: 'http://158.179.191.24/', //Test対象のURL
-    TEST_USERNAME: 'TestUser',
-    TEST_PASSWORD: 'TestUserpass'
+    TEST_USERNAME: 'TestUser', //Testユーザ名
+    TEST_PASSWORD: 'TestUserpass' //Testユーザのパスワード
   },
 });
